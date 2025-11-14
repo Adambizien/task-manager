@@ -41,8 +41,32 @@ Le design est intégralement réalisé avec **TailwindCSS**, et l'application es
 
 ## 📦 Installation et lancement
 
-### 1️⃣ Cloner le projet
 ```bash
 git clone https://github.com/Adambizien/task-manager.git
 cd task-manager
+npm install
 ```
+#### Lancer en mode développement
+```
+npm run dev
+```
+#### Générer la version de production ET Prévisualiser la production
+```
+npm run build
+npm run preview
+```
+---
+### 📁 Structure du projet
+task-manager/
+│── public/
+│── src/
+│   ├── components/
+│   │   ├── TaskForm.jsx
+│   │   ├── TaskList.jsx
+|   |   ├── TaskCard.jsx
+│   ├── App.jsx
+│   ├── main.jsx
+│   ├── index.css
+│── package.json
+│── README.md
+
