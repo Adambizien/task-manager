@@ -55,18 +55,3 @@ npm run dev
 npm run build
 npm run preview
 ```
----
-### 📁 Structure du projet
-task-manager/
-│── public/
-│── src/
-│   ├── components/
-│   │   ├── TaskForm.jsx
-│   │   ├── TaskList.jsx
-|   |   ├── TaskCard.jsx
-│   ├── App.jsx
-│   ├── main.jsx
-│   ├── index.css
-│── package.json
-│── README.md
-
