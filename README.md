@@ -45,4 +45,4 @@ Le design est intégralement réalisé avec **TailwindCSS**, et l'application es
 ```bash
 git clone https://github.com/Adambizien/task-manager.git
 cd task-manager
-``
+```
