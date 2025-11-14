@@ -1,73 +1,48 @@
-# React + TypeScript + Vite
+# Task Manager — React, Vite & Tailwind
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Description
+Task Manager est une application React développée avec Vite permettant de gérer des tâches classées par catégorie (Travail, Personnel, Urgent).  
+L'utilisateur peut ajouter, modifier et supprimer des tâches.  
+Le design est intégralement réalisé avec **TailwindCSS**, et l'application est pleinement responsive.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Fonctionnalités
+### ✔ Gestion des tâches
+- Ajout d’une tâche avec :
+  - Description
+  - Catégorie (Travail, Personnel, Urgent)
+- Modification d'une tâche existante
+- Suppression d’une tâche
+- Affichage organisé sous forme de cartes
 
-## React Compiler
+### 🎨 UI / UX
+- Interface responsive (mobile, tablette, desktop)
+- Style 100% Tailwind
+- Couleurs spécifiques selon la catégorie
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🏗 Architecture
+- **TaskForm** : Formulaire permettant d’ajouter ou modifier une tâche.  
+- **TaskList** : Affiche toutes les tâches sous forme de liste.  
+- **TaskCard** : Petite carte qui représente une tâche individuelle (description, catégorie, priorité, actions).  
+- **App** : Composant principal qui gère l’état global et transmet les données aux autres composants.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠 Technologies utilisées
+- **React 19**
+- **React DOM 19**
+- **Vite 7**
+- **TypeScript 5**
+- **TailwindCSS 4**
+- **Lucide React** (icônes)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📦 Installation et lancement
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 1️⃣ Cloner le projet
+```bash
+git clone https://github.com/Adambizien/task-manager.git
+cd task-manager
+``
