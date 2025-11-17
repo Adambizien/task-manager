@@ -1,0 +1,51 @@
+/* Fonction avancée LightningCSS : @custom-media */
+@custom-media --mobile (width < 600px);
+
+/* Couleur avancée modern CSS : oklab() */
+/* Nesting + bonus : selectors imbriqués */
+.task-card {
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: oklab(0.97 0 0);
+  box-shadow: var(--card-shadow);
+  transition: all .2s;
+
+  &:hover {
+    scale: 1.02;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Nesting de sous-éléments */
+  .task-content {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    .task-title {
+      font-weight: 600;
+    }
+
+    .task-date {
+      font-size: .8rem;
+      opacity: 0.7;
+    }
+  }
+}
+
+/* Media query moderne : syntaxe range */
+@media (600px < width < 1000px) {
+  .task-card {
+    padding: 2rem;
+    background: oklab(0.94 0 0);
+  }
+}
+
+/* Media query via custom-media */
+@media (--mobile) {
+  .task-card {
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+}

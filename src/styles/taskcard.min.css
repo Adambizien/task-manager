@@ -1,0 +1,44 @@
+@custom-media --mobile (width<600px);
+
+.task-card {
+    --card-shadow: 0 4px 12px #00000014;
+    box-shadow: var(--card-shadow);
+    background: oklab(97% 0 0);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all .2s;
+
+    &:hover {
+        scale: 1.02;
+        box-shadow: 0 6px 20px #00000026
+    }
+
+    & .task-content {
+        flex-direction: column;
+        gap: .5rem;
+        display: flex;
+
+        & .task-title {
+            font-weight: 600
+        }
+
+        & .task-date {
+            opacity: .7;
+            font-size: .8rem
+        }
+    }
+}
+
+@media (600px<width<1000px) {
+    .task-card {
+        background: oklab(94% 0 0);
+        padding: 2rem
+    }
+}
+
+@media (--mobile) {
+    .task-card {
+        border-radius: .75rem;
+        padding: 1rem
+    }
+}

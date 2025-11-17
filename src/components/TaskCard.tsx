@@ -1,5 +1,6 @@
 import type { Task, TaskCategory, TaskPriority } from '../types/task';
 import { Briefcase, User, AlertTriangle, Flag, Calendar, Clock, Edit, Trash2, Check } from 'lucide-react';
+import '../styles/taskcard.css';
 
 interface TaskCardProps {
   task: Task;
@@ -55,17 +56,19 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onEdit, onDelete, onToggleCom
   const isOverdue = task.dueDate && new Date(task.dueDate) < new Date() && !task.completed;
 
   return (
-    <div className={`group relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 border transition-all duration-300 hover:shadow-lg hover:scale-[1.02] ${
+    <div className={`task-card group relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 border transition-all duration-300 hover:shadow-lg hover:scale-[1.02] ${
       task.completed 
         ? 'border-emerald-200/60 bg-emerald-50/50' 
         : 'border-slate-200/60 hover:border-slate-300'
     } ${isOverdue ? 'border-l-4 border-l-rose-400' : ''}`}>
-      
+
       {/* Indicateur de catégorie */}
       <div className={`absolute top-0 left-0 w-1 h-full bg-gradient-to-b ${getCategoryGradient(task.category)} rounded-l-2xl`}></div>
-      
+
       <div className="flex items-start justify-between ml-3">
         <div className="flex items-start space-x-4 flex-1">
+      
+          {/* checkbox */}
           <button
             onClick={() => onToggleComplete(task.id)}
             className={`mt-1 w-6 h-6 rounded-xl border-2 flex items-center justify-center transition-all duration-300 ${
@@ -77,8 +80,8 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onEdit, onDelete, onToggleCom
             {task.completed && <Check className="w-3 h-3" />}
           </button>
 
-          {/* Contenu */}
-          <div className="flex-1 min-w-0">
+          {/* === CONTENU AVEC CLASSES CSS LightningCSS === */}
+          <div className="flex-1 min-w-0 task-content">
             <div className="flex items-center flex-wrap gap-2 mb-3">
               {/* Badge catégorie */}
               <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${getCategoryGradient(task.category)} text-white shadow-md`}>
@@ -87,7 +90,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onEdit, onDelete, onToggleCom
                 {task.category === 'personal' && 'Personnel'}
                 {task.category === 'urgent' && 'Urgent'}
               </span>
-              
+
               {/* Badge priorité */}
               <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium border ${getPriorityColor(task.priority)}`}>
                 {getPriorityIcon(task.priority)}
@@ -96,7 +99,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onEdit, onDelete, onToggleCom
                 {task.priority === 'high' && 'Haute'}
               </span>
 
-              {/* Badge en retard */}
+              {/* Badge retard */}
               {isOverdue && (
                 <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-rose-100 text-rose-700 border border-rose-200">
                   <Clock className="w-3 h-3" />
@@ -105,22 +108,22 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onEdit, onDelete, onToggleCom
               )}
             </div>
 
-            <p className={`text-slate-800 break-words leading-relaxed ${
+            {/* Description + classe LightningCSS */}
+            <p className={`task-title text-slate-800 break-words leading-relaxed ${
               task.completed ? 'line-through text-slate-400' : ''
             }`}>
               {task.description}
             </p>
-
             <div className="flex items-center gap-4 mt-3 text-xs text-slate-500">
               {task.dueDate && (
-                <span className={`flex items-center gap-1 ${
+                <span className={`task-date flex items-center gap-1 ${
                   isOverdue ? 'text-rose-600 font-semibold' : ''
                 }`}>
                   <Calendar className="w-3 h-3" />
                   {formatDate(task.dueDate)}
                 </span>
               )}
-              <span className="flex items-center gap-1">
+              <span className="task-date flex items-center gap-1">
                 <Clock className="w-3 h-3" />
                 {formatDate(task.createdAt)}
               </span>
